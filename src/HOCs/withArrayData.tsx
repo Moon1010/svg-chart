@@ -4,15 +4,15 @@ type WithArrayDataProps = {
   data: number[] | string;
 };
 
-export function withArrayData<T extends WithArrayDataProps>(
+export function withArrayData<T extends { data: number[] }>(
   Component: React.ComponentType<T>
-): React.FC<Omit<T, keyof WithArrayDataProps> & WithArrayDataProps> {
-  return function NewComponent(
-    props: Omit<T, keyof WithArrayDataProps> & WithArrayDataProps
-  ) {
+): React.FunctionComponent<
+  Omit<T, keyof WithArrayDataProps> & WithArrayDataProps
+> {
+  return function ArrayStringDataComponent(props) {
     const { data, ...rest } = props;
     const arrayData = React.useMemo(() => {
-      if (typeof data == "string") {
+      if (typeof data === "string") {
         if (data) {
           return data.split(",").map(Number);
         } else {

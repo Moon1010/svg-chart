@@ -1,16 +1,20 @@
 import React from "react";
-import { PERCENT_MAX_DEFAULT } from "../../../../constants";
+import { MAX_PERCENT_DEFAULT } from "../../../../constants";
 import { CommonChartProps } from "../../Chart";
 
-export function LineChart({ data, color }: CommonChartProps) {
+export type LineChartProps = CommonChartProps;
+
+export function LineChart({ data, color }: LineChartProps) {
   const points = React.useMemo(() => {
     const maxValue = Math.max(...data);
+
     if (!maxValue) {
       return "";
     }
-    const length = data?.length;
-    const widthUnit = PERCENT_MAX_DEFAULT / length;
-    const heightUnit = PERCENT_MAX_DEFAULT / maxValue;
+
+    const length = data.length;
+    const widthUnit = MAX_PERCENT_DEFAULT / length;
+    const heightUnit = MAX_PERCENT_DEFAULT / maxValue;
 
     const points = data
       .map((item, index) => {
@@ -20,9 +24,9 @@ export function LineChart({ data, color }: CommonChartProps) {
       })
       .join(" ");
 
-    return `0,${heightUnit * maxValue} ${points} ${
+    return `0,${MAX_PERCENT_DEFAULT} ${points} ${
       widthUnit * (length - 1) + widthUnit
-    }, ${heightUnit * maxValue}`;
+    }, ${MAX_PERCENT_DEFAULT}`;
   }, [data]);
 
   return (

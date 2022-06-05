@@ -1,15 +1,19 @@
 import React from "react";
-import { PERCENT_MAX_DEFAULT } from "../../../../constants";
+import { MAX_PERCENT_DEFAULT } from "../../../../constants";
 import { CommonChartProps } from "../../Chart";
 
-export function BarsChart({ data, color }: CommonChartProps) {
+export type BarsChartProps = CommonChartProps;
+
+export function BarsChart({ data, color }: BarsChartProps) {
   const rectangles = React.useMemo(() => {
     const maxValue = Math.max(...data);
+
     if (!maxValue) {
       return null;
     }
-    const widthPercentUnit = PERCENT_MAX_DEFAULT / data.length;
-    const heightPercentUnit = PERCENT_MAX_DEFAULT / Math.max(...data);
+
+    const widthPercentUnit = MAX_PERCENT_DEFAULT / data.length;
+    const heightPercentUnit = MAX_PERCENT_DEFAULT / maxValue;
 
     return (
       <g>

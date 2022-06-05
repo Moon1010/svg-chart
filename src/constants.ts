@@ -1,1 +1,1 @@
-export const PERCENT_MAX_DEFAULT = 100;
+export const MAX_PERCENT_DEFAULT = 100;
