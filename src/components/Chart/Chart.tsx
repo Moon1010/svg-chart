@@ -1,6 +1,5 @@
-import { BarsChart } from "./barsChart";
-import { LineChart } from "./lineChart";
-import { withArrayData } from "./withArrayData";
+import BarsChart from "./components/BarsChart";
+import LineChart from "./components/LineChart";
 
 type Mode = "bars" | "line";
 
@@ -13,9 +12,9 @@ export type ChartProps = {
   mode: Mode;
 } & CommonChartProps;
 
-function Chart({ mode, data, color }: ChartProps) {
+export function Chart({ mode, data, color }: ChartProps) {
   if (!data.length) {
-    return <div>Please input data</div>;
+    return <div>No data</div>;
   }
 
   if (mode == "line") {
@@ -23,5 +22,3 @@ function Chart({ mode, data, color }: ChartProps) {
   }
   return <BarsChart data={data} color={color} />;
 }
-
-export default withArrayData(Chart);

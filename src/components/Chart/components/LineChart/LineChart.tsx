@@ -1,6 +1,6 @@
 import React from "react";
-import { PERCENT_MAX_DEFAULT } from "../barsChart";
-import { CommonChartProps } from "../Chart";
+import { PERCENT_MAX_DEFAULT } from "../../../../constants";
+import { CommonChartProps } from "../../Chart";
 
 export function LineChart({ data, color }: CommonChartProps) {
   const points = React.useMemo(() => {

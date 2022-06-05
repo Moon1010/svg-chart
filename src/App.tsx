@@ -2,6 +2,7 @@ import Chart from "./components/Chart";
 
 export function App() {
   const data: number[] | string = "1,9,3,5,8,1,7,12,4,20,6,7,8,14,1,17";
+
   return (
     <div
       style={{
