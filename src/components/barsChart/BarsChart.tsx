@@ -11,7 +11,6 @@ export function BarsChart({ data, color }: CommonChartProps) {
     }
     const widthPercentUnit = PERCENT_MAX_DEFAULT / data.length;
     const heightPercentUnit = PERCENT_MAX_DEFAULT / Math.max(...data);
-    console.log();
 
     return (
       <g>
